@@ -12,8 +12,7 @@ export class DeskOccupancyService {
     constructor(private httpClient: HttpClient) { }
 
     getDeskOccupancyById(id: number): Observable<DeskOccupancy> {
-        console.log("bbb")
-        return this.httpClient.get<DeskOccupancy>("http://localhost:5237/api/DeskOccupancy/5");
+        return this.httpClient.get<DeskOccupancy>(environment.apiUrl + '/DeskOccupancy/' + id);
     }
 
 }

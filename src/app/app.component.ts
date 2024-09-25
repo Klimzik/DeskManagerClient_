@@ -15,7 +15,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("aa");
     this.deskOccupancyService.getDeskOccupancyById(5).subscribe(val => {
         console.log(val);
     });

@@ -1,0 +1,44 @@
+@use '../../styles/variables.scss';
+
+
+.container {
+    display: flex;
+    padding: 0 20px;
+    background-color: variables.$basic-app-color;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    height: 90px;
+    .header {
+        display: flex;
+        align-items: center;
+        transition: font-size 0.3s ease;
+    }
+    
+    .links {
+        flex-grow: 1;
+        display: flex;
+        gap: 20px;
+        justify-content: right;
+        font-size: 18px;
+        align-items: center;
+        margin-right: 100px;
+        color: #cac6c6;
+        .link {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+    }
+}
+
+.active-link{
+    color: white;
+}
+
+.link:hover {
+    color: rgb(255, 255, 255);
+}
+
+.header:hover {
+    font-size: 28px;
+}

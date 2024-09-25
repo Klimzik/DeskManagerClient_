@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeskOccupancyService } from './api/services';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './components';
+
+const COMPONENTS = [HeaderComponent]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    COMPONENTS
   ],
   imports: [
     BrowserModule,
