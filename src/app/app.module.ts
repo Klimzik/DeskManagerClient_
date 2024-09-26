@@ -5,19 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeskOccupancyService } from './api/services';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './components';
+import { ActivityHistoryComponent, DeskBookingComponent, HeaderComponent, HomePageComponent, ReleaseDeskComponent } from './components';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const COMPONENTS = [HeaderComponent]
+
+const COMPONENTS = [HeaderComponent, DeskBookingComponent, ActivityHistoryComponent, ReleaseDeskComponent, HomePageComponent];
 
 @NgModule({
   declarations: [
     AppComponent,
-    COMPONENTS
+    COMPONENTS,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [DeskOccupancyService],
   bootstrap: [AppComponent]

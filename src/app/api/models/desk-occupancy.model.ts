@@ -1,7 +1,7 @@
 export interface DeskOccupancy {
     id: number;
-    deskNumber: string;
+    deskNumber: number;
     floorNumber: number;
     workerEmail: string;
-    occupiedAt: Date;
+    reservationDate: string;
 }

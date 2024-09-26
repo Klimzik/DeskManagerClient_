@@ -1,0 +1,35 @@
+<div class="content" [formGroup]="formGroup">
+
+    <div class="inside-content">
+
+        <div class="main-header">Book your desk</div>
+
+        <div class="control">
+            <div class="header">Desk number</div>
+            <input class="value" type="number" placeholder="Enter desk number"
+                formControlName="deskNumber">
+        </div>
+
+        <div class="control">
+            <div class="header">Floor number</div>
+            <input class="value" type="number" placeholder="Enter floor number" formControlName="floorNumber">
+        </div>
+
+        <div class="control">
+            <div class="header">Reservation date</div>
+            <input class="value" type="datetime-local" formControlName="reservationDate" readonly>
+        </div>
+
+        <div class="control">
+            <div class="header">Worker email</div>
+            <input class="value" formControlName="workerEmail">
+        </div>
+
+        <div class="btn-section">
+            <div class="btn" (click)="handleBookClick()">Book</div>
+        </div>
+
+    </div>
+
+
+</div>

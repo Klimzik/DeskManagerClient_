@@ -1,0 +1,9 @@
+.content {
+    display: flex;
+    justify-content: center; // Centrowanie poziome
+    align-items: center;     // Opcjonalnie: centrowanie pionowe, jeśli potrzebne
+    margin: 0 auto;
+    padding-left: 15%;
+    padding-right: 15%; 
+    width: 70%;
+}

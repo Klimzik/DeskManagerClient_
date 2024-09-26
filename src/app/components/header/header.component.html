@@ -1,9 +1,10 @@
 <div class="container">
     <div class="header">
-        Vehicle Tracking System
+        Desk booking!
     </div>
     <div class="links">
-        <div class="link" routerLink="/track-details" [routerLinkActive]="'active-link'">Track details</div>
-        <div class="link" routerLink="/map" [routerLinkActive]="'active-link'">Map</div>
+        <div class="link" (click)="navigateToDeskBooking()">Book a desk</div>
+        <div class="link" (click)="navigateToReleaseADesk()">Release a desk</div>
+        <div class="link" (click)="navigateToActivityHistory()">Activity history</div>
     </div>
 </div>
