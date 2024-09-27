@@ -4,6 +4,7 @@ import { ActivityHistoryComponent, DeskBookingComponent, HomePageComponent } fro
 
 const routes: Routes = [
   {path: 'desk-booking', component: DeskBookingComponent},
+  { path: 'desk-booking/:deskNumber', component: DeskBookingComponent }, 
   {path: 'activity-history', component: ActivityHistoryComponent},
   {path: '**', component: HomePageComponent, pathMatch: 'full'},
 ];

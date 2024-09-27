@@ -1,20 +1,21 @@
 @use './../../styles/global-styles.scss';
+@use '../../styles/variables.scss';
 
 .app-title, .welcome-message, .features, .conclusion-message {
-    text-align: center; /* Centrowanie tekstu */
-    margin: 20px 0; /* Marginesy wokół sekcji */
+    text-align: center; 
+    margin: 20px 0;
 }
 
 .features-title {
     font-size: 1.5em;
-    color: #2980B9;
+    color: #000000;
     margin-top: 30px;
 }
 
 .features-list {
     list-style-type: disc;
     margin-left: 20px;
-    text-align: left; /* Ustawienie wyrównania listy */
+    text-align: left;
 }
 
 .features-list li {

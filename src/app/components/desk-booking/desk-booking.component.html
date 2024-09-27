@@ -1,31 +1,34 @@
 <div class="content" [formGroup]="formGroup">
 
-    <div class="inside-content">
+    <div class="inner-container">
+        <div class="inside-content">
 
-        <div class="main-header">Book your desk</div>
+            <div class="main-header">Book your desk</div>
 
-        <div class="control">
-            <div class="header">Desk number</div>
-            <input class="value" type="number" placeholder="Enter desk number"
-                formControlName="deskNumber" appDeskNumber>
+            <div class="control">
+                <div class="header">Desk number</div>
+                <input class="value" type="number" placeholder="Four digits" formControlName="deskNumber" appDeskNumber>
+            </div>
+
+            <div class="control">
+                <div class="header">Floor number</div>
+                <input class="value" type="number" placeholder="From one to seven" formControlName="floorNumber"
+                    appFloorNumber>
+            </div>
+
+            <div class="control">
+                <div class="header">Reservation date</div>
+                <input class="value" type="datetime-local" formControlName="reservationDate" readonly>
+            </div>
+
+            <div class="control">
+                <div class="header">Worker email</div>
+                <input class="value" formControlName="workerEmail">
+            </div>
+
         </div>
 
-        <div class="control">
-            <div class="header">Floor number</div>
-            <input class="value" type="number" placeholder="Enter floor number" formControlName="floorNumber" appFloorNumber>
-        </div>
-
-        <div class="control">
-            <div class="header">Reservation date</div>
-            <input class="value" type="datetime-local" formControlName="reservationDate" readonly>
-        </div>
-
-        <div class="control">
-            <div class="header">Worker email</div>
-            <input class="value" formControlName="workerEmail">
-        </div>
-
-        <div class="btn-section">
+        <div class="btn-section" [ngClass]="{'opacity-item': !isFormGroupValid()}">
             <div class="btn" (click)="handleBookClick()">Book</div>
         </div>
 

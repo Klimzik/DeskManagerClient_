@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DeskOccupancy } from 'src/app/api/models';
 import { DeskOccupancyService } from 'src/app/api/services';
@@ -24,10 +24,12 @@ export class DeskBookingComponent implements OnInit, OnDestroy {
 
     deskOccupancy: DeskOccupancy;
     sub: Subscription = new Subscription();
+    deskNumberString: string;
 
-    constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService, private snackBar: MatSnackBar, private router: Router) { }
+    constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService, private snackBar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit(): void {
+        this.checkRoute();
         this.setCurrentDate();
     }
 
@@ -41,16 +43,36 @@ export class DeskBookingComponent implements OnInit, OnDestroy {
         }
     }
 
+    private checkRoute(): void {
+        this.sub.add(this.route.params.subscribe(params => {
+            this.deskNumberString = params['deskNumber'];
+            if (/^\d{4}$/.test(this.deskNumberString!) || this.deskNumberString === undefined) {
+                const deskNumber = parseInt(this.deskNumberString, 10);
+                this.formGroup.get('deskNumber')?.setValue(deskNumber);
+            }
+            else {
+                this.router.navigate(['/home-page']);
+                this.invalidRouteBar();
+            }
+        }));
+    }
+
     private addBookDesk(): void {
         this.deskOccupancy = this.formGroup.getRawValue() as DeskOccupancy;
         this.sub.add(this.deskOccupancyService.addBookDesk(this.deskOccupancy).subscribe(val => {
-            this.openSuccessfullBar()
+            this.openSuccessfullBar();
             this.navigateToHomePage();
         }));
     }
 
     private openSuccessfullBar(): void {
         this.snackBar.open('Desk booking went well!', 'Close', {
+            duration: 4000,
+        });
+    }
+
+    private invalidRouteBar(): void {
+        this.snackBar.open('Invalid link', 'Close', {
             duration: 4000,
         });
     }
@@ -74,5 +96,8 @@ export class DeskBookingComponent implements OnInit, OnDestroy {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
 
+    protected isFormGroupValid(): boolean {
+        return this.formGroup.valid;
+    }
 
 }

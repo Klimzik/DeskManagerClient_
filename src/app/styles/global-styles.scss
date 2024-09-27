@@ -1,9 +1,20 @@
+@use './variables.scss';
+
 .content {
     display: flex;
     justify-content: center; // Centrowanie poziome
-    align-items: center;     // Opcjonalnie: centrowanie pionowe, jeśli potrzebne
+    align-items: center; // Opcjonalnie: centrowanie pionowe, jeśli potrzebne
     margin: 0 auto;
     padding-left: 15%;
-    padding-right: 15%; 
+    padding-right: 15%;
     width: 70%;
+}
+
+.inner-container {
+    height: auto;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: variables.$basic-white;
+    border-radius: 10px;
+    margin-top: 20px;
 }

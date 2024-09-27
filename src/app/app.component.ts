@@ -6,17 +6,9 @@ import { DeskOccupancyService } from './api/services';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'DeskManagerClient_';
 
+  constructor() { }
 
-  constructor(private deskOccupancyService: DeskOccupancyService) {
-
-  }
-
-  ngOnInit(): void {
-    this.deskOccupancyService.getDeskOccupancyById(5).subscribe(val => {
-        console.log(val);
-    });
-  }
 }

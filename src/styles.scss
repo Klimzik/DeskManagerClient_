@@ -38,7 +38,8 @@ $DeskManagerClient_-theme: mat.define-light-theme((
 
 body{
     margin: 0;
-    background-color: variables.$background-color;}
+    background-color: variables.$background-color;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
