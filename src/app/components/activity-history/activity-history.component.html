@@ -1,9 +1,31 @@
-<div class="content">
+<div class="content" [formGroup]="formGroup">
+
+    <div class="inner-container horizontal-layout">
+
+        <div class="control">
+            <div class="">Floor number</div>
+            <input class="value" type="number" placeholder="From one to seven" formControlName="floorNumber"
+                appFloorNumber>
+        </div>
+
+        <div class="control">
+            <div >Reservation date</div>
+            <input class="value" type="date" formControlName="reservationDate">
+        </div>
+
+        <div class="control">
+            <div >Worker email</div>
+            <input class="value" formControlName="workerEmail">
+        </div>
+
+    </div>
 
     <div class="inner-container">
+
         <div class="header">
             <div>Activity history</div>
         </div>
+        
         <div class="top-margin">
             <div class="table">
                 <table>
@@ -51,7 +73,7 @@
                 </table>
             </div>
         </div>
+        
     </div>
-
-
+    
 </div>

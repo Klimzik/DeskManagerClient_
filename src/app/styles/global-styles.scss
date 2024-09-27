@@ -2,12 +2,13 @@
 
 .content {
     display: flex;
-    justify-content: center; // Centrowanie poziome
-    align-items: center; // Opcjonalnie: centrowanie pionowe, jeśli potrzebne
+    justify-content: center;
+    align-items: center; 
     margin: 0 auto;
     padding-left: 15%;
     padding-right: 15%;
     width: 70%;
+    flex-direction: column; 
 }
 
 .inner-container {

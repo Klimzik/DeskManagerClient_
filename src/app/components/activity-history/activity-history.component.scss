@@ -1,7 +1,6 @@
 @use '../../styles/variables.scss';
 @use './../../styles/global-styles.scss';
 
-
 .table-container {
     height: auto;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
@@ -12,7 +11,7 @@
 }
 
 .table-container .table {
-    height: 70vh; 
+    height: 70vh;
     overflow-y: auto;
 }
 
@@ -117,8 +116,26 @@ tr.row:hover {
 }
 
 .btn-container {
-    display: flex;       
-    align-items: center; 
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 8px;           
+    gap: 8px;
+}
+
+.horizontal-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+input {
+    width: 170px;
+}
+
+.value {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }

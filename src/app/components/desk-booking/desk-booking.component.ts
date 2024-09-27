@@ -26,7 +26,8 @@ export class DeskBookingComponent implements OnInit, OnDestroy {
     sub: Subscription = new Subscription();
     deskNumberString: string;
 
-    constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService, private snackBar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
+    constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService, private snackBar: MatSnackBar, private router: Router, 
+        private route: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.checkRoute();
