@@ -8,18 +8,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-
-    constructor(private router: Router) {
-
-
-    }
+    constructor(private router: Router) { }
 
     protected navigateToDeskBooking(): void {
         this.router.navigate(['/desk-booking']);
-    }
-
-    protected navigateToReleaseADesk(): void {
-        this.router.navigate(['/release-desk']);
     }
 
     protected navigateToActivityHistory(): void {

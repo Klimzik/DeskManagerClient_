@@ -22,4 +22,13 @@ export class DeskOccupancyService {
     addBookDesk(deskOccupancy: DeskOccupancy): Observable<DeskOccupancy> {
         return this.httpClient.post<DeskOccupancy>(`${environment.apiUrl}/DeskOccupancy`, deskOccupancy);
     }
+
+    releaseDeskOccupancy(id: number, deskOccupancy: DeskOccupancy): Observable<void> {
+        return this.httpClient.put<void>(`${environment.apiUrl}/DeskOccupancy/Release/${id}`, deskOccupancy);
+    }
+    
+
+    deleteDeskOccupancy(id: number): Observable<void> {
+        return this.httpClient.delete<void>(`${environment.apiUrl}/DeskOccupancy/${id}`);
+    }
 }

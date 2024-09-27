@@ -1,0 +1,22 @@
+@use './../../styles/global-styles.scss';
+
+.app-title, .welcome-message, .features, .conclusion-message {
+    text-align: center; /* Centrowanie tekstu */
+    margin: 20px 0; /* Marginesy wokół sekcji */
+}
+
+.features-title {
+    font-size: 1.5em;
+    color: #2980B9;
+    margin-top: 30px;
+}
+
+.features-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    text-align: left; /* Ustawienie wyrównania listy */
+}
+
+.features-list li {
+    margin: 10px 0;
+}

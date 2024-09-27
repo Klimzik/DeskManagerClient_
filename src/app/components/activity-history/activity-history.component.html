@@ -36,7 +36,16 @@
                             <td>{{ desk.workerEmail }}</td>
                             <td>{{ desk.reservationDate | date: 'short'}}</td>
                             <td>{{ desk.isOccupated ? 'Is Occupated' : 'Already released' }}</td>
-                            <td></td>
+                            <td>
+                                <div class="btn-container">
+                                    <div *ngIf="desk.isOccupated" class="btn" (click)="releaseDesk(desk)">
+                                        <mat-icon>remove_circle</mat-icon>
+                                    </div>
+                                    <div class="btn" (click)="deleteDesk(desk)">
+                                        <mat-icon>delete</mat-icon>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -19,13 +19,29 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.getDesksOccupancy()
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
+    }
+
+    getDesksOccupancy(): void {
         this.sub.add(this.deskOccupancyService.getDesksOccupancy().subscribe(val => {
             this.desksOccupancy = val;
         }));
     }
 
-    ngOnDestroy(): void {
-        this.sub.unsubscribe();
+    releaseDesk(desk: DeskOccupancy) {
+        this.sub.add(this.deskOccupancyService.releaseDeskOccupancy(desk.id, desk).subscribe(val => { 
+            this.getDesksOccupancy();
+        }));
+    }
+
+    deleteDesk(desk: DeskOccupancy) {
+        this.sub.add(this.deskOccupancyService.deleteDeskOccupancy(desk.id).subscribe(val => { 
+            this.getDesksOccupancy();
+        }));
     }
 
 }

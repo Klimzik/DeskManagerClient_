@@ -106,4 +106,19 @@ tr.row:hover {
     text-align: left;
 }
 
-.value {}
+.btn {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #a17e7e;
+}
+
+.btn-container {
+    display: flex;       
+    align-items: center; 
+    justify-content: center;
+    gap: 8px;           
+}

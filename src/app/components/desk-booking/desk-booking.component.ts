@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DeskOccupancy } from 'src/app/api/models';
 import { DeskOccupancyService } from 'src/app/api/services';
@@ -23,7 +25,7 @@ export class DeskBookingComponent implements OnInit, OnDestroy {
     deskOccupancy: DeskOccupancy;
     sub: Subscription = new Subscription();
 
-    constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService) { }
+    constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService, private snackBar: MatSnackBar, private router: Router) { }
 
     ngOnInit(): void {
         this.setCurrentDate();
@@ -41,7 +43,20 @@ export class DeskBookingComponent implements OnInit, OnDestroy {
 
     private addBookDesk(): void {
         this.deskOccupancy = this.formGroup.getRawValue() as DeskOccupancy;
-        this.sub.add(this.deskOccupancyService.addBookDesk(this.deskOccupancy).subscribe(val => { }));
+        this.sub.add(this.deskOccupancyService.addBookDesk(this.deskOccupancy).subscribe(val => {
+            this.openSuccessfullBar()
+            this.navigateToHomePage();
+        }));
+    }
+
+    private openSuccessfullBar(): void {
+        this.snackBar.open('Desk booking went well!', 'Close', {
+            duration: 4000,
+        });
+    }
+
+    protected navigateToHomePage(): void {
+        this.router.navigate(['/home-page']);
     }
 
     private setCurrentDate(): void {
