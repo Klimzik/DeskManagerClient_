@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { DeskOccupancy } from 'src/app/api/models';
 import { DeskOccupancyService } from 'src/app/api/services';
 
@@ -8,17 +9,19 @@ import { DeskOccupancyService } from 'src/app/api/services';
     templateUrl: './desk-booking.component.html',
     styleUrls: ['./desk-booking.component.scss']
 })
-export class DeskBookingComponent implements OnInit {
+export class DeskBookingComponent implements OnInit, OnDestroy {
 
     formGroup = this.fb.group({
         id: [null as number | null],
         deskNumber: [null as number | null, Validators.required],
         floorNumber: [null as number | null, Validators.required],
         workerEmail: ["", [Validators.required, Validators.email]],
-        reservationDate: ["", Validators.required]
+        reservationDate: ["", Validators.required],
+        isOccupated: [true, Validators.required],
     });
 
     deskOccupancy: DeskOccupancy;
+    sub: Subscription = new Subscription();
 
     constructor(private fb: FormBuilder, private deskOccupancyService: DeskOccupancyService) { }
 
@@ -26,11 +29,11 @@ export class DeskBookingComponent implements OnInit {
         this.setCurrentDate();
     }
 
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
+    }
 
     protected handleBookClick(): void {
-        this.deskOccupancyService.getDeskOccupancy().subscribe(val => {
-            console.log(val);
-        })
         if (this.formGroup.valid) {
             this.addBookDesk();
         }
@@ -38,15 +41,7 @@ export class DeskBookingComponent implements OnInit {
 
     private addBookDesk(): void {
         this.deskOccupancy = this.formGroup.getRawValue() as DeskOccupancy;
-        console.log(this.deskOccupancy)
-        this.deskOccupancyService.addBookDesk(this.deskOccupancy).subscribe(
-            response => {
-                console.log('Desk occupancy added:', response);
-            },
-            error => {
-                console.error('Error adding desk occupancy:', error);
-            }
-        );
+        this.sub.add(this.deskOccupancyService.addBookDesk(this.deskOccupancy).subscribe(val => { }));
     }
 
     private setCurrentDate(): void {

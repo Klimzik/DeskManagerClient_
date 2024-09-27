@@ -4,4 +4,5 @@ export interface DeskOccupancy {
     floorNumber: number;
     workerEmail: string;
     reservationDate: string;
+    isOccupated: boolean;
 }

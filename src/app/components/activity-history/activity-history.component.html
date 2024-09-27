@@ -1,1 +1,48 @@
-<p>activity-history works!</p>
+<div class="content">
+
+    <div class="table-container">
+        <div class="header">
+            <div>Activity history</div>
+        </div>
+        <div class="top-margin">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr class="headers-table">
+                            <th>
+                                <span class="header-text">Desk number</span>
+                            </th>
+                            <th>
+                                <span class="header-text">Floor number</span>
+                            </th>
+                            <th>
+                                <span class="header-text">Worker email</span>
+                            </th>
+                            <th>
+                                <span class="header-text">Reservation date</span>
+                            </th>
+                            <th>
+                                <span class="header-text">Is occupated</span>
+                            </th>
+                            <th>
+                                <span class="header-text">Actions</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row" *ngFor="let desk of desksOccupancy">
+                            <td>{{ desk.deskNumber }}</td>
+                            <td>{{ desk.floorNumber }}</td>
+                            <td>{{ desk.workerEmail }}</td>
+                            <td>{{ desk.reservationDate | date: 'short'}}</td>
+                            <td>{{ desk.isOccupated ? 'Is Occupated' : 'Already released' }}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

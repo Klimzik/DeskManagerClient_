@@ -15,7 +15,7 @@ export class DeskOccupancyService {
         return this.httpClient.get<DeskOccupancy>(`${environment.apiUrl}/DeskOccupancy/${id}`);
     }
 
-    getDeskOccupancy(): Observable<DeskOccupancy[]> {
+    getDesksOccupancy(): Observable<DeskOccupancy[]> {
         return this.httpClient.get<DeskOccupancy[]>(`${environment.apiUrl}/DeskOccupancy`);
     }
 
